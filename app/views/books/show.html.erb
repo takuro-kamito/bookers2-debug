@@ -7,25 +7,38 @@
       <%= render 'form', book: @books_new %>
     </div>
     <div class='col-md-8 offset-md-1'>
-  		<h2>Book detail</h2>
-  		<table class='table'>
-  		  <tr>
-          <td><%= link_to user_path(@book.user) do %>
-            <%= image_tag @book.user.get_profile_image(100,100) %><br>
-            <%= @book.user.name %>
+      <h2>Book detail</h2>
+      <table class='table'>
+        <tr>
+          <td>
+            <%= link_to user_path(@book.user) do %>
+              <%= image_tag @book.user.get_profile_image(100,100) %><br>
+              <%= @book.user.name %>
             <% end %>
           </td>
-          <td><%= link_to @book.title, @book %></td>
-          <td><%= @book.body %>
+          <td>
+            <%= link_to @book.title, @book %>
+          </td>
+          <td>
+            <%= @book.body %>
           </td>
           <% if @book.user == current_user %>
             <td>
               <%= link_to "Edit", edit_book_path(@book), class: "btn btn-sm btn-success" %>
-              </td>
+            </td>
             <td>
-              <%= link_to "Destroy", book_path(@book), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger"%>
-              </td>
-              <% end %>
+              <%= link_to "Destroy", book_path(@book), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %>
+            </td>
+          <% end %>
+        </tr>
+      </table>
+      <%= render "book_comments/index", book: @books_new, book_comment: @book_comment %>
+      <%= render "book_comments/form", book: @book, book_comment: @book_comment %>
+      <table class='table'>
+        <tr>
+          <td colspan="3">
+            コメント数 : <%= @book.book_comments.count %>
+          </td>
         </tr>
       </table>
     </div>
