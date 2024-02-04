@@ -13,16 +13,12 @@ Rails.application.routes.draw do
   resource :relationships, only: [:create, :destroy]
   get 'followings' => 'relationships#followings', as: 'followings'
   get 'followers' => 'relationships#followers', as: 'followers'
+
 end
+get "search", to: "searches#search"
 
   resources :books do
   resources :book_comments
 end
-
-
-
-
-
-
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
  end

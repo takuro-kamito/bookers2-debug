@@ -18,6 +18,18 @@ class Book < ApplicationRecord
     end
   end
   
+  def self.search_for(content, method)
+    if method == 'perfect'
+      Book.where(title: content)
+    elsif method == 'forward'
+      Book.where('title LIKE ?', content + '%')
+    elsif method == 'backward'
+      Book.where('title LIKE ?', '%' + content)
+    else
+      Book.where('title LIKE ?', '%' + content + '%')
+    end
+  end
+  
   def get_image
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
