@@ -19,10 +19,11 @@
           <td>
             <%= link_to @book.title, @book %>
           </td>
-
-          <td>コメント数:  <%= @book.book_comments.count %></td>
            <td><%= @book.body %></td>
            <td><%= render "favorites/btn", book: @book %></td>
+           <td id="comments_counter">
+              <%= render "book_comments/counter", book: @book %>
+           </td>
             <% if @book.user == current_user %>
             <td>
               <%= link_to "Edit", edit_book_path(@book), class: "btn btn-sm btn-success" %>
@@ -33,7 +34,9 @@
           <% end %>
         </tr>
       </table>
+      <div id="book_comments_index">
       <%= render "book_comments/index", book: @book %>
+      </div>
       <%= render "book_comments/form", book: @book, book_comment: @book_comment %>
       <table class='table'>
         <tr>
