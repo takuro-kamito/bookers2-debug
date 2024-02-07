@@ -53,7 +53,7 @@ before_action :ensure_correct_user, only: [:edit, :update]
   private
 
   def book_params
-    params.require(:book).permit(:title, :body, :profile_image, :introduction)
+    params.require(:book).permit(:title, :body, :profile_image, :introduction, :star)
   end
 def ensure_correct_user
     book = Book.find(params[:id])

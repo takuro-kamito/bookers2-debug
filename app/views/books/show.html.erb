@@ -38,6 +38,8 @@
       <%= render "book_comments/index", book: @book %>
       </div>
       <%= render "book_comments/form", book: @book, book_comment: @book_comment %>
+      <div><%= render 'form', book: Book.new %></div>
+      <div><%= render "static_rate", book: @book %></div>
       <table class='table'>
         <tr>
         </tr>
