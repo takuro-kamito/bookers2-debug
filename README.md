@@ -1,6 +1,6 @@
 # Bookers
 
-## Ruby on Railsでの応用課題　CRUDページ制作課題
+## Ruby on Railsでの応用課題　CRUDページ制作
 
 ・　いいね機能の実装
 
