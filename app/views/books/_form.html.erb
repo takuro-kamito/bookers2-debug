@@ -11,34 +11,18 @@
   <div class="form-group">
     <%= f.submit 'Create Book', class: 'btn btn-success' %>
   </div>
-  # star追加
-  <% if book.id.nil? %>
-  <div class="form-group" id="star"></div>
-  <%= f.label :star %>
-  <%= f.hidden_field :star, id: :review_star, class: 'form-control' %>
-  <div id="post_raty"></div>
+  <div class="form-group row" id="star">
+    <%= f.label :star,'評価 ', class:'col-md-3 col-form-label' %>
+    <%= f.hidden_field :star, id: :review_star %>
+　　　　</div>
   <script>
-  $(document).on('turbolinks:load', function() {
-    let elem = document.queryselector('#post_raty');
-    if (elem == null) return;
-    
-    elem.innerHTML = ""
-    let opt = {
-      starOn: '<%= aseet_path('star-on.png') %>",
-      starOff: "<%= asset_path('star-off".png') %>",
-      starHalf: "<%= asset_path('star-half.png')%>",
-      scoreName: 'book[star]',
-      };
-      raty(elem,opt);
-        });
+　$('#star').empty();
+  $('#star').raty({
+    size     : 36,
+    starOff:  '<%= asset_path('star-off.png') %>',
+    starOn : '<%= asset_path('star-on.png') %>',
+ 　 　　　scoreName: 'book[star]',　
+    half: false,
+  });
   </script>
-  <% else %>
-  <div class="form-group">
-    <%= render "static_rate", book: book %>
-  </div>
-   <% end %>
-  <div class="form-group">
-    <%= f.submit class: 'btn btn-succece' %>
-  </div>
   <% end %>
- 
