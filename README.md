@@ -1,24 +1,15 @@
-# README
+# Bookers
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Ruby on Railsでの応用課題　CRUDページ制作
 
-Things you may want to cover:
+・　いいね機能の実装
 
-* Ruby version
+・　いいね機能の非同期通信
 
-* System dependencies
+・　フォロー　フォロワー機能
 
-* Configuration
+・　検索機能
 
-* Database creation
+・　コメント機能の実装
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+・　コメント機能の非同期通信
