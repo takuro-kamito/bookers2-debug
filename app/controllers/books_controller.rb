@@ -9,14 +9,16 @@ before_action :ensure_correct_user, only: [:edit, :update]
   end
 
   def index
-    @user = current_user
-    @users = User.all
+    # @user = current_user
+    # @users = User.all
     @book = Book.new
-    @books = Book.all
-    to = Time.current.at_end_of_day
-    from = (to - 6.day).at_beginning_of_day
-    @books = Book.includes(:favorited_users).
-    sort_by {|x|x.favorited_users.includes(:favorites).where(created_at: from...to).size}.reverse
+    # @books = Book.all
+    to  = Time.current.at_end_of_day
+    from  = (to - 6.day).at_beginning_of_day
+    @books = Book.all.sort {|a,b|
+      b.favorites.where(created_at: from...to).size <=>
+      a.favorites.where(created_at: from...to).size
+    }
   end
 
   def create
