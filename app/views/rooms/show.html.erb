@@ -9,7 +9,7 @@
  <% @messages.each do |m| %>
   <% @myUserId == m.user.id %>
    <p><%= m.user.name %></p>
-    <P><%= m.message %></P>
+    <P><%= m.user.messages %></P>
     <% end %>
   <% end %>
 
